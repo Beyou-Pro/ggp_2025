@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2o76ccel2ckd"
-path="res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+uid="uid://dvx6xwp7x4184"
+path="res://.godot/imported/pngtree-red-ball-icon-png-image_6231651.png-17f12f4689b30be9957a7c002adddd26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.svg"
-dest_files=["res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"]
+source_file="res://images/pngtree-red-ball-icon-png-image_6231651.png"
+dest_files=["res://.godot/imported/pngtree-red-ball-icon-png-image_6231651.png-17f12f4689b30be9957a7c002adddd26.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
