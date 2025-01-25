@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://qv1123gmseoi"]
+[gd_scene load_steps=3 format=3 uid="uid://qv1123gmseoi"]
 
 [ext_resource type="Texture2D" uid="uid://c2o76ccel2ckd" path="res://icon.svg" id="1_xs7xb"]
+[ext_resource type="Script" path="res://scripts/canon_rotation.gd" id="2_bptbp"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Player" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Bubble" type="Sprite2D" parent="."]
 texture = ExtResource("1_xs7xb")
+script = ExtResource("2_bptbp")

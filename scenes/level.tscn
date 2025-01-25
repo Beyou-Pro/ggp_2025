@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://bxhma82pl02wm"]
+[gd_scene load_steps=3 format=3 uid="uid://bxhma82pl02wm"]
+
+[ext_resource type="Texture2D" uid="uid://drgdcftimvg6h" path="res://images/istockphoto-1128349116-612x612.jpg" id="1_n7kq5"]
+[ext_resource type="PackedScene" uid="uid://qv1123gmseoi" path="res://scenes/player.tscn" id="2_8orn1"]
 
 [node name="Level" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_n7kq5")
+
+[node name="Player" parent="." instance=ExtResource("2_8orn1")]
