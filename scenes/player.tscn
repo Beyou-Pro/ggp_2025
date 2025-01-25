@@ -23,3 +23,6 @@ script = SubResource("GDScript_7n1js")
 
 [node name="BouleRouge" type="Sprite2D" parent="."]
 texture = ExtResource("3_012p1")
+
+[node name="Camera2D" type="Camera2D" parent="BouleRouge"]
+position_smoothing_enabled = true
