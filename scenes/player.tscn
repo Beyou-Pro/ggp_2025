@@ -25,6 +25,7 @@ texture = ExtResource("2_i0hkd")
 script = SubResource("GDScript_7n1js")
 
 [node name="Bubble" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_78kjk")
 
 [node name="Camera2D" type="Camera2D" parent="Bubble"]
