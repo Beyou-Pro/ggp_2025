@@ -6,6 +6,8 @@
 [node name="Spike" type="Node2D"]
 
 [node name="SpikeBody" type="RigidBody2D" parent="."]
+mass = 1000.0
+gravity_scale = 0.0
 script = ExtResource("1_oi7f5")
 
 [node name="Sprite2D" type="Sprite2D" parent="SpikeBody"]

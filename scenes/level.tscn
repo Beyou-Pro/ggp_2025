@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scenes/main_scene.gd" id="1_7222u"]
 [ext_resource type="PackedScene" uid="uid://qv1123gmseoi" path="res://scenes/player.tscn" id="2_8orn1"]
 [ext_resource type="PackedScene" uid="uid://bxp288ix6nuib" path="res://scenes/World.tscn" id="2_8t7ko"]
-[ext_resource type="PackedScene" uid="uid://bpovkljdqifr" path="res://scenes/cursor.tscn" id="4_3rbek"]
-[ext_resource type="PackedScene" uid="uid://8pk5bnmwwwve" path="res://scenes/projectiles.tscn" id="5_hoc8c"]
+[ext_resource type="PackedScene" uid="uid://bbv6stdkoodc2" path="res://scenes/cursor.tscn" id="4_3rbek"]
+[ext_resource type="PackedScene" uid="uid://c2eb38ojneibp" path="res://scenes/projectiles.tscn" id="5_hoc8c"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_7222u")
