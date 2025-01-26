@@ -21,13 +21,13 @@ func _process(delta: float) -> void:
 	angle_bubble = bubble_center.angle_to_point(cursor.global_position)
 	rotation = angle_bubble
 	cursor.global_position = cursor.get_global_mouse_position()
-	bubble.position = Vector2.ZERO
+	#bubble.position = Vector2.ZERO
 	bubble.rotation = -rotation
 
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			bubble.position += Vector2(10,0)
+			bubble.global_position += Vector2(10,0)
 			print(bubble.position)
 	
 	
