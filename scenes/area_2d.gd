@@ -5,18 +5,28 @@ extends Area2D
 var push_force = 70.0
 
 func _ready():
-	connect("body_entered", Callable(self, "_on_rigidbody_collision"))
+	# More explicit connection
+	body_entered.connect(_on_body_entered)
 
 func _process(delta: float):
-	direction = -Vector2(cos(rotation), sin(rotation)).normalized()
+	# Movement based on rotation
+	var direction = -Vector2(cos(rotation), sin(rotation)).normalized()
+	position += direction * speed * delta
 
-	if direction != Vector2.ZERO:
-		# print("Projectile ID: ", get_instance_id(), " | Position: ", position)
-		position += direction.normalized() * speed * delta
-
-func _on_rigidbody_collision(body):
-	if body is RigidBody2D:
-		if body.is_in_group("bubbles"):
-			var push_direction = (body.global_position - global_position).normalized()
-			body.apply_central_impulse(push_direction * push_force)	
+func _on_body_entered(body):
+	print("Collision detected with: ", body.name, " Type: ", body.get_class())
+	
+	if body is RigidBody2D and body.is_in_group("bubbles"):
+		var push_direction = (body.global_position - global_position).normalized()
+		body.apply_central_impulse(push_direction * push_force)
+		queue_free()
+	
+	if body is TileMap:
+		var tile_pos = body.local_to_map(body.to_local(global_position))
+		var has_collision = body.get_cell_collision_layer_value(0, tile_pos)
+		
+		print("TileMap collision at: ", tile_pos)
+		print("Has physics collision: ", has_collision)
+		
+		if has_collision:
 			queue_free()
