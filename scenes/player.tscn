@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://qv1123gmseoi"]
+[gd_scene load_steps=7 format=3 uid="uid://qv1123gmseoi"]
 
 [ext_resource type="Script" path="res://scripts/follow_movement.gd" id="1_yv58d"]
 [ext_resource type="Texture2D" uid="uid://lh5wc6sjhipl" path="res://images/4434825.png" id="2_i0hkd"]
@@ -6,7 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://c2o76ccel2ckd" path="res://images/icon.svg" id="4_fp45n"]
 [ext_resource type="Script" path="res://projectiles.gd" id="5_748q3"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6msol"]
+bounce = 0.1
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_3bg1i"]
+radius = 32.0
 
 [sub_resource type="GDScript" id="GDScript_11clp"]
 script/source = "extends Sprite2D
@@ -16,7 +20,7 @@ script/source = "extends Sprite2D
 func _process(_delta: float) -> void:
 	var cursor_position = get_global_mouse_position()
 	global_position = cursor_position
-
+	
 	var bubble_center = bubblebody.position
 	var angle_bubble = bubble_center.angle_to_point(global_position)
 	rotation = angle_bubble + -PI / 4
@@ -26,7 +30,10 @@ func _process(_delta: float) -> void:
 script = ExtResource("1_yv58d")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_6msol")
 gravity_scale = 0.0
+linear_velocity = Vector2(100, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CircleShape2D_3bg1i")
