@@ -4,6 +4,7 @@ var speed = 250.0
 
 func _ready():
 	linear_velocity = Vector2(-200, -200).normalized() * speed
+	add_to_group("bubbles")
 
 func _integrate_forces(state):
 	if state.contact_count > 0:

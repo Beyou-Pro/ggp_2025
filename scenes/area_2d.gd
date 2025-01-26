@@ -2,6 +2,7 @@ extends Area2D
 
 @export var speed: float = 1000.0
 @export var direction: Vector2 = Vector2.ZERO
+var push_force = 80.0
 
 func _process(delta: float):
 	direction = -Vector2(cos(rotation), sin(rotation)).normalized()
@@ -12,3 +13,10 @@ func _process(delta: float):
 
 func _on_area_entered(_area: Area2D) -> void:
 	queue_free()
+	
+
+func _on_Laser_body_entered(body):
+	print("coucou")
+	if body.is_in_group("bubbles"):
+		var push_direction = (body.global_position - global_position).normalized()
+		body.apply_central_impulse(push_direction * push_force)	
