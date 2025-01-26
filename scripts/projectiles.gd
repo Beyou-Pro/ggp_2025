@@ -11,5 +11,5 @@ func _process(_delta: float) -> void:
 	cursor_position = get_global_mouse_position()
 	angle_to_bubble = bubblebody.position.angle_to_point(cursor_position)
 	
-	if Input.is_action_just_pressed("Shoot"):
+	if Input.is_action_pressed("Shoot"):
 		laser.emit(cursor_position, angle_to_bubble)

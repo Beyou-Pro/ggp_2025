@@ -1,8 +1,8 @@
 extends Area2D
 
-@export var speed: float = 1000.0
+@export var speed: float = 700.0
 @export var direction: Vector2 = Vector2.ZERO
-var push_force = 80.0
+var push_force = 50.0
 
 func _ready():
 	connect("body_entered", Callable(self, "_on_rigidbody_collision"))
