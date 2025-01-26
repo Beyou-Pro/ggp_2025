@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpovkljdqifr"]
+
+[ext_resource type="Script" path="res://scripts/projectiles.gd" id="1_b7w7l"]
+[ext_resource type="Texture2D" uid="uid://lh5wc6sjhipl" path="res://images/4434825.png" id="1_icbqk"]
+[ext_resource type="Script" path="res://scripts/cursor.gd" id="2_84s48"]
+
+[node name="cursor" type="Node2D"]
+script = ExtResource("1_b7w7l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_icbqk")
+script = ExtResource("2_84s48")

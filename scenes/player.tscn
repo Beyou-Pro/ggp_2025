@@ -1,10 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://qv1123gmseoi"]
 
-[ext_resource type="Script" path="res://scripts/follow_movement.gd" id="1_yv58d"]
-[ext_resource type="Texture2D" uid="uid://lh5wc6sjhipl" path="res://images/4434825.png" id="2_i0hkd"]
 [ext_resource type="Texture2D" uid="uid://dfivo4eulr2ux" path="res://images/bubble.png" id="3_78kjk"]
 [ext_resource type="Texture2D" uid="uid://c2o76ccel2ckd" path="res://images/icon.svg" id="4_fp45n"]
-[ext_resource type="Script" path="res://projectiles.gd" id="5_748q3"]
+
+[sub_resource type="GDScript" id="GDScript_k8v0s"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6msol"]
 bounce = 0.1
@@ -12,52 +11,52 @@ bounce = 0.1
 [sub_resource type="CircleShape2D" id="CircleShape2D_3bg1i"]
 radius = 32.0
 
-[sub_resource type="GDScript" id="GDScript_11clp"]
-script/source = "extends Sprite2D
+[sub_resource type="GDScript" id="GDScript_fvqgw"]
+script/source = "extends Node2D
+var shoot = false
 
-@onready var bubblebody = get_parent().get_node(\"RigidBody2D\")
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
 
-signal laser
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	var cursor_position = get_global_mouse_position()
-	global_position = cursor_position
-	
-	var bubble_center = bubblebody.position
-	var angle_bubble = bubble_center.angle_to_point(global_position)
-	rotation = angle_bubble + -PI / 4
+		if shoot  == true:
+			pass
+			#print(\"feu\") 
+		
 
-	laser.emit()
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			shoot = true
+			#print(\"projectile_on\")
+		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			shoot = false
+			#print(\"projectile_off\")
+	
 "
 
 [node name="Player" type="Node2D"]
-script = ExtResource("1_yv58d")
+script = SubResource("GDScript_k8v0s")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="BubbleBody" type="RigidBody2D" parent="."]
 mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_6msol")
 gravity_scale = 0.0
 linear_velocity = Vector2(100, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BubbleBody"]
 shape = SubResource("CircleShape2D_3bg1i")
 
-[node name="Bubble" type="Sprite2D" parent="RigidBody2D"]
+[node name="Bubble" type="Sprite2D" parent="BubbleBody"]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_78kjk")
 
-[node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
+[node name="Camera2D" type="Camera2D" parent="BubbleBody"]
 position_smoothing_enabled = true
-
-[node name="Cursor" type="Sprite2D" parent="."]
-position = Vector2(220, 220)
-rotation = -0.785398
-scale = Vector2(0.140625, 0.140625)
-texture = ExtResource("2_i0hkd")
-script = SubResource("GDScript_11clp")
 
 [node name="Projectile" type="Sprite2D" parent="."]
 texture = ExtResource("4_fp45n")
-script = ExtResource("5_748q3")
-
-[connection signal="laser" from="Cursor" to="." method="_on_cursor_laser"]
+script = SubResource("GDScript_fvqgw")
