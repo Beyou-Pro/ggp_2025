@@ -11,3 +11,4 @@ func _integrate_forces(state):
 		for i in range(state.get_contact_count()):
 			var collision_normal = state.get_contact_local_normal(i)
 			linear_velocity = linear_velocity.bounce(collision_normal)
+		
