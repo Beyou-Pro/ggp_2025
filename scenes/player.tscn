@@ -1,18 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://qv1123gmseoi"]
+[gd_scene load_steps=6 format=3 uid="uid://qv1123gmseoi"]
 
 [ext_resource type="Script" path="res://scripts/follow_movement.gd" id="1_yv58d"]
 [ext_resource type="Texture2D" uid="uid://lh5wc6sjhipl" path="res://images/4434825.png" id="2_i0hkd"]
 [ext_resource type="Texture2D" uid="uid://dfivo4eulr2ux" path="res://images/bubble.png" id="3_78kjk"]
 
-[sub_resource type="GDScript" id="GDScript_7n1js"]
+[sub_resource type="GDScript" id="GDScript_11clp"]
 script/source = "extends Sprite2D
 
 @onready var icon = $icon
+@onready var bubblebody = get_parent().get_node(\"Bubble/RigidBody2D\")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _process(_delta: float) -> void:
+	var cursor_position = get_global_mouse_position()
+	global_position = cursor_position
+
+	var bubble_center = bubblebody.position
+	var angle_bubble = bubble_center.angle_to_point(global_position)
+	rotation = angle_bubble + -PI / 4
+	print(bubblebody.position)
 "
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3bg1i"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_yv58d")
@@ -22,11 +30,19 @@ position = Vector2(220, 220)
 rotation = -0.785398
 scale = Vector2(0.140625, 0.140625)
 texture = ExtResource("2_i0hkd")
-script = SubResource("GDScript_7n1js")
+script = SubResource("GDScript_11clp")
 
 [node name="Bubble" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_78kjk")
 
-[node name="Camera2D" type="Camera2D" parent="Bubble"]
+[node name="RigidBody2D" type="RigidBody2D" parent="Bubble"]
+scale = Vector2(1, 1)
+
+[node name="Camera2D" type="Camera2D" parent="Bubble/RigidBody2D"]
+scale = Vector2(1, 1)
+process_callback = 0
 position_smoothing_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bubble/RigidBody2D"]
+shape = SubResource("CircleShape2D_3bg1i")
