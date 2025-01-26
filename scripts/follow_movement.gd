@@ -16,6 +16,7 @@ extends Node2D
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
+
 	#Mouse = get_local_mouse_position()
 	#bubble_center = bubble.global_position + bubble.offset
 	#angle_bubble = bubble_center.angle_to_point(cursor.global_position)
@@ -29,6 +30,3 @@ extends Node2D
 		#if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			#bubble.position += Vector2(10,0)
 			#print(bubble.position)
-	#
-	#
-	#
