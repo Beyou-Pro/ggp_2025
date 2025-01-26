@@ -2,7 +2,11 @@ extends Node2D
 
 @onready var cursor = $Cursor
 @onready var bubble = $Bubble
+
 var Mouse
+var bubble_center
+var angle_bubble
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
@@ -13,8 +17,12 @@ var Mouse
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	Mouse = get_local_mouse_position()
-	rotation += Mouse.angle()
+	bubble_center = bubble.global_position + bubble.offset
+	angle_bubble = bubble_center.angle_to_point(cursor.global_position)
+	rotation = angle_bubble
 	cursor.global_position = cursor.get_global_mouse_position()
 	bubble.position = Vector2(2,0)
+	bubble.rotation = -rotation
+	
 	
 	
