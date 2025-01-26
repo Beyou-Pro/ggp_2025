@@ -30,3 +30,7 @@ extends Node2D
 		#if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			#bubble.position += Vector2(10,0)
 			#print(bubble.position)
+
+
+func _on_cursor_laser() -> void:
+	pass # Replace with function body.
