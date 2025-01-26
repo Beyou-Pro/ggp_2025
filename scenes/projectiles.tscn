@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://8pk5bnmwwwve"]
+
+[ext_resource type="Script" path="res://scenes/area_2d.gd" id="1_1dg53"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5vy56"]
+
+[node name="Projectiles" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_1dg53")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_5vy56")
+debug_color = Color(0.972794, 0, 0.438547, 0.42)

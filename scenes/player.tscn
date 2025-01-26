@@ -1,9 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://qv1123gmseoi"]
+[gd_scene load_steps=4 format=3 uid="uid://qv1123gmseoi"]
 
 [ext_resource type="Texture2D" uid="uid://dfivo4eulr2ux" path="res://images/bubble.png" id="3_78kjk"]
-[ext_resource type="Texture2D" uid="uid://c2o76ccel2ckd" path="res://images/icon.svg" id="4_fp45n"]
-
-[sub_resource type="GDScript" id="GDScript_k8v0s"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6msol"]
 bounce = 0.1
@@ -11,35 +8,7 @@ bounce = 0.1
 [sub_resource type="CircleShape2D" id="CircleShape2D_3bg1i"]
 radius = 32.0
 
-[sub_resource type="GDScript" id="GDScript_fvqgw"]
-script/source = "extends Node2D
-var shoot = false
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-		if shoot  == true:
-			pass
-			#print(\"feu\") 
-		
-
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			shoot = true
-			#print(\"projectile_on\")
-		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-			shoot = false
-			#print(\"projectile_off\")
-	
-"
-
 [node name="Player" type="Node2D"]
-script = SubResource("GDScript_k8v0s")
 
 [node name="BubbleBody" type="RigidBody2D" parent="."]
 mass = 0.1
@@ -56,7 +25,3 @@ texture = ExtResource("3_78kjk")
 
 [node name="Camera2D" type="Camera2D" parent="BubbleBody"]
 position_smoothing_enabled = true
-
-[node name="Projectile" type="Sprite2D" parent="."]
-texture = ExtResource("4_fp45n")
-script = SubResource("GDScript_fvqgw")

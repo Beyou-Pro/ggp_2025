@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxhma82pl02wm"]
+[gd_scene load_steps=6 format=3 uid="uid://bxhma82pl02wm"]
 
 [ext_resource type="Script" path="res://scenes/main_scene.gd" id="1_7222u"]
 [ext_resource type="PackedScene" uid="uid://qv1123gmseoi" path="res://scenes/player.tscn" id="2_8orn1"]
 [ext_resource type="PackedScene" uid="uid://bxp288ix6nuib" path="res://scenes/World.tscn" id="2_8t7ko"]
 [ext_resource type="PackedScene" uid="uid://bpovkljdqifr" path="res://scenes/cursor.tscn" id="4_3rbek"]
+[ext_resource type="PackedScene" uid="uid://8pk5bnmwwwve" path="res://scenes/projectiles.tscn" id="5_hoc8c"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_7222u")
@@ -11,8 +12,9 @@ script = ExtResource("1_7222u")
 [node name="World" parent="." instance=ExtResource("2_8t7ko")]
 
 [node name="Player" parent="." instance=ExtResource("2_8orn1")]
-script = null
 
 [node name="Cursor" parent="." instance=ExtResource("4_3rbek")]
+
+[node name="Projectiles" parent="." instance=ExtResource("5_hoc8c")]
 
 [connection signal="laser" from="Cursor" to="." method="_on_cursor_laser"]
